@@ -15,12 +15,12 @@ Start-Process powershell.exe -Verb RunAs -ArgumentList ('-noprofile -noexit -fil
 exit
 }
 
-Write-Host "Closing the Teams proccess" -ForegroundColor Yellow
+Write-Host "Closing the Teams process" -ForegroundColor Yellow
 try{
 Get-Process -ProcessName Teams | Stop-Process -Force
-Write-Host "Closed the Teams proccess" -ForegroundColor Green
+Write-Host "Closed the Teams process" -ForegroundColor Green
 }catch{
-Write-Host "No Teams proccess detected" -ForegroundColor Green
+Write-Host "No Teams process detected" -ForegroundColor Green
 echo $_
 }
 Write-Host "Clearing a Teams cache" -ForegroundColor Yellow
