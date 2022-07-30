@@ -15,15 +15,15 @@ Start-Process powershell.exe -Verb RunAs -ArgumentList ('-noprofile -noexit -fil
 exit
 }
 
-Write-Host "Zatrzymywanie procesu Teams" -ForegroundColor Yellow
+Write-Host "Closing the Teams proccess" -ForegroundColor Yellow
 try{
 Get-Process -ProcessName Teams | Stop-Process -Force
-Write-Host "Zatrzymano proces Teams" -ForegroundColor Green
+Write-Host "Closed the Teams proccess" -ForegroundColor Green
 }catch{
-Write-Host "Teams nie jest uruchomione" -ForegroundColor Yellow
+Write-Host "No Teams proccess detected" -ForegroundColor Green
 echo $_
 }
-Write-Host "Usuwanie cache Teams" -ForegroundColor Yellow
+Write-Host "Clearing a Teams cache" -ForegroundColor Yellow
 try{
 Get-ChildItem -Path $env:APPDATA\"Microsoft\Teams\Cache" | Remove-Item -Confirm:$false -force
 Get-ChildItem -Path $env:APPDATA\"Microsoft\Teams\blob_storage" | Remove-Item -Confirm:$false -force
@@ -32,16 +32,16 @@ Get-ChildItem -Path $env:APPDATA\"Microsoft\Teams\gpucache" | Remove-Item -Confi
 Get-ChildItem -Path $env:APPDATA\"Microsoft\Teams\Indexeddb" | Remove-Item -Confirm:$false -recurse -force
 Get-ChildItem -Path $env:APPDATA\"Microsoft\Teams\Local Storage" | Remove-Item -Confirm:$false -recurse -force
 Get-ChildItem -Path $env:APPDATA\"Microsoft\Teams\tmp" | Remove-Item -Confirm:$false -force
-Write-Host "Wyczyszczono Roaming cache" -ForegroundColor Green
+Write-Host "Roaming cache cleared" -ForegroundColor Green
 }catch{
 echo $_
 }
-$challenge = Read-Host "Uruchomić Teams ponownie? (Y/N)?"
+$challenge = Read-Host "Launch Teams? (Y/N)?"
 $challenge = $challenge.ToUpper()
 if ($challenge -eq "N"){
 Stop-Process -Id $PID
 }elseif ($challenge -eq "Y"){
-Write-Host "Uruchamianie Teams" -ForegroundColor Yellow
+Write-Host "Launching Teams" -ForegroundColor Yellow
 Start-Process -FilePath $env:LOCALAPPDATA\Microsoft\Teams\current\Teams.exe
 Stop-Process -Id $PID
 }
