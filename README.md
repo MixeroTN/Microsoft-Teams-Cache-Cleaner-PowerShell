@@ -12,7 +12,7 @@ Note: This script requires administrator privileges to run.
 
 ## Script Explanation
 
-The script starts by checking if the current user has administrator privileges. If not, it will prompt the user to run the script with administrator privileges.
+The script starts by checking if the current user has administrator privileges. If not, it will ask for administrator privileges.
 
 The script then closes the Teams process if it's active, and clears the Teams cache. The Teams cache is located in the following directories:
 
