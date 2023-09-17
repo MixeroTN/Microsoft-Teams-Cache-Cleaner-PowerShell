@@ -10,6 +10,7 @@ This is a PowerShell script that is designed to clean the cache of Microsoft Tea
 ⚠️ **Script requires administrator privileges to run.**
 
 ## Usage
+
 - Launch `clearTeams.ps1`
 - Grant administrator privileges
 - The script will close any active Teams process and clear the Teams cache
